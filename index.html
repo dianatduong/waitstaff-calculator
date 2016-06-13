@@ -20,9 +20,22 @@
 				<form name="calc.myForm">
 					<div class="meal-details">
 						<h2>Enter the Meal Details</h2>
+
 							<div class="input-content">
-								
+								<label for ="price">Base Meal Price: &#36;</label>
+								<input id="price" type="number" name="price" ng-model="calc.price" required>
 							</div>
+
+							<div class="input-content">
+								<label for="tax">Tax Rate: &#37;</label>
+								<input id=" tax" type="number" name="tax" ng-model="calc.tax" required>
+							</div>
+
+							<div class="input-content">
+								<label for="tip">Tip Percentage: &#37;</label>
+								<input id="tip" type="number" name="tip" ng-model="calc.tip" required>
+							</div>
+
 							<div class="btns">
 								<button id="submit-btn">Submit</button>
 								<button id="cancel-btn">Cancel</button>
@@ -32,10 +45,22 @@
 
 				<div class="charges">
 					<h2>Customer Charges</h2>
+					<div>
+						<div>Subtotal {{ }}</div>
+						<div>Tip {{ }}</div>
+						<hr>
+						<div>Total {{ }}</div>
+					</div>
+
 				</div>
 
 				<div class="earnings">
 					<h2>My Earnings Info</h2>
+					<div>
+						<div>Tip Total {{ }}</div>
+						<div>Meal count: {{ }}</div>
+						<div>Average Tip Per Meal: {{ }}</div>
+					</div>
 				</div>
 
 				<div>
