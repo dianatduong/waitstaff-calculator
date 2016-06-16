@@ -8,7 +8,11 @@
 	 <!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/styles.css">
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-messages.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+
+
+	
 </head>
 
 <body ng-app="myApp">
@@ -18,68 +22,67 @@
 			<h1>Waitstaff Calculator</h1>
 		</header>
 
-		<section ng-controller="myController as calc">
+		<section ng-controller="CalculatorController as calc">
 			<div class="container">
-
 				<div class="row">
-				<div class="col-xs-12 col-md-6">
-					<form name="calc.myForm">
-						<div class="meal-details">
-							<h2>Enter Meal Details</h2>
+					<div class="col-xs-12 col-md-6">
+						<form name="inputForm" ng-submit="inputForm.$valid && calc.submitCost(inputForm.$valid)" novalidate>
+							<div class="meal-details">
+								<h2>Enter Meal Details</h2>
 								<div class="input-content">
-									<label for ="price">Base Meal Price: &#36;</label>
-									<input id="price" type="number" name="price" ng-model="calc.price" required>
-								</div>
+									<label for="price">Base Meal Price: &#36;</label>
+									<input id="price" type="number" name="price" ng-model="calc.price" ng-pattern="onlyNumbers" required>
+								</div> 
 
 								<div class="input-content">
 									<label for="tax">Tax Rate: &#37;</label>
-									<input id=" tax" type="number" name="tax" ng-model="calc.tax" required>
+									<input id="tax" type="number" name="tax" ng-model="calc.mealDetails.tax" ng-pattern="onlyNumbers" required>
 								</div>
 
 								<div class="input-content">
 									<label for="tip">Tip Percentage: &#37;</label>
-									<input id="tip" type="number" name="tip" ng-model="calc.tip" required>
+									<input id="tip" type="number" name="tip" ng-model="calc.mealDetails.tip" ng-pattern="onlyNumbers" required>
 								</div>
 
 								<div class="btns">
-									<button id="submit-btn">Submit</button>
+									<button id="submit-btn" type="submit">Submit</button>
 									<button id="cancel-btn">Cancel</button>
 								</div>
-						</div>
-					</form>
-				</div>
+							</div>
+						</form> 
+					</div>
 
 			
 				<div class="col-xs-12 col-md-6">
-				<div class="charges">
-					<h2>Customer Charges</h2>
-					<div>
-						<div>Subtotal {{ }}</div>
-						<div>Tip {{ }}</div>
-						<!-- <hr> -->
-						<div>Total {{ }}</div>
+					<div class="charges">
+						<h2>Customer Charges</h2>
+						<div>
+							<div>Subtotal<p ng-show="inputForm.$valid">{{ calc.price + calc.tax | currency}}</p>
+							</div>
+							<div>Tip<p ng-show="inputForm.$valid">{{ (calc.tip).toFixed(2)}}% </p></div>
+							<!-- <hr> -->
+							<div>Total <p ng-show="inputForm.$valid">{{ (calc.price + calc.tax) * calc.tip}}</p></div>
+						</div>
 					</div>
-				</div>
 				</div>
 	
 				<div class="col-xs-12 col-md-6">
-				<div class="earnings">
-					<h2>My Earnings Info</h2>
-					<div>
-						<div>Tip Total {{ }}</div>
-						<div>Meal count: {{ }}</div>
-						<div>Average Tip Per Meal: {{ }}</div>
+					<div class="earnings">
+						<h2>My Earnings Info</h2>
+						<div>
+							<div>Tip Total {{ }}</div>
+							<div>Meal count: {{ }}</div>
+							<div>Average Tip Per Meal: {{ }}</div>
+						</div>
 					</div>
 				</div>
+
+					<div>
+						<button id="reset">Reset</button>
+					</div> 
 				</div>
 			</div>
-
-				<div>
-					<button id="reset">Reset</button>
-				</div> 
-			</div> 
 		</section>
-
 	</div> 
 	<script src="js/script.js" type="text/javascript"></script>
 </body>
