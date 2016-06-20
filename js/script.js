@@ -1,15 +1,21 @@
 var app = angular.module('myApp', [])
 	app.controller('CalculatorController', function(){
 
+    this.mealPrice = 0;
+    this.mealTax = 0;
+    this.mealTip = 0;
+    this.earningsTipTotal = 0;
+    this.customerSubtotal = 0;
+    this.customerTotalTip = 0;
+    this.customerTotalCharge = 0;
+    this.mealCount = 0;
+    this.avgTip = 0;
+
     //submitted forms empty array
    	this.submittedMealData = [];
    
    	// validates input is only numbers
    	this.onlyNumbers = /^\d+$/;
-
-    this.mealCount = 0;
-
-    this.earningsAvgTip = []
 
     // function to submit the form after all validation has occurred
     this.submitForm = function(isValid){
@@ -27,9 +33,10 @@ var app = angular.module('myApp', [])
 
         // multiplyin the subtotal to the tip to get the totalTip and add to the subtotal to get the customerTotalCharge
         this.customerTotalCharge = this.customerSubtotal + this.customerTotalTip;
-
-        //function to calculate the average tip per meal count
+        
         this.averageTip()
+
+        this.tipTotal()
       }
       else {
         // show error messages
@@ -37,23 +44,34 @@ var app = angular.module('myApp', [])
        }
     }
 
+    //function to calculate the average tip per meal count
+    this.averageTip = function(){
+      this.avgTip = this.customerTotalTip / this.mealCount;
+    }
+
+    //function to calulate overall total custoer tips
+    this.tipTotal = function(){
+      this.earningsTipTotal += this.customerTotalTip;
+    }
+
+    // function to cancel meal details input
     this.cancelForm = function(){
       this.mealPrice = '';
       this.mealTax = '';
       this.mealTip = '';
     }
 
+    // function to reset all fields
     this.resetForm = function(){
-      this.mealPrice = '';
-      this.mealTax = '';
-      this.mealTip = '';
-      this.mealCount = '';
-      this.customerSubtotal = '';
-      this.customerTotalTip = '';
-    }
-
-    this.averageTip = function(){
-      this.avgTip = this.customerTotalTip / this.mealCount;
+      this.mealPrice = 0;
+      this.mealTax = 0;
+      this.mealTip = 0;
+      this.earningsTipTotal = 0;
+      this.customerSubtotal = 0;
+      this.customerTotalTip = 0;
+      this.customerTotalCharge = 0;
+      this.mealCount = 0;
+      this.avgTip = 0;
     }
 
 	})
