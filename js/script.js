@@ -37,6 +37,9 @@ var app = angular.module('myApp', [])
         this.averageTip()
 
         this.tipTotal()
+        this.mealPrice = 0;
+    this.mealTax = 0;
+    this.mealTip = 0;
       }
       else {
         // show error messages
@@ -56,9 +59,9 @@ var app = angular.module('myApp', [])
 
     // function to cancel meal details input
     this.cancelForm = function(){
-      this.mealPrice = '';
-      this.mealTax = '';
-      this.mealTip = '';
+      this.mealPrice = 0;
+      this.mealTax = 0;
+      this.mealTip = 0;
     }
 
     // function to reset all fields
