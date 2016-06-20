@@ -61,7 +61,7 @@
 						<div>
 							<div>Subtotal<p ng-show="inputForm.$valid">{{ calc.customerSubtotal | currency}}</p>
 							</div>
-							<div>Tip<p ng-show="inputForm.$valid">{{ calc.customerTotalTip }}% </p></div>
+							<div>Tip<p ng-show="inputForm.$valid">{{ calc.customerTotalTip | currency }} </p></div>
 							<!-- <hr> -->
 							<div>Total <p ng-show="inputForm.$valid">{{ calc.customerTotalCharge | currency}}</p></div>
 						</div>
@@ -74,7 +74,7 @@
 						<div>
 							<div>Tip Total {{ calc.earningsTipTotal }}</div>
 							<div>Meal count: {{ calc.mealCount }}</div>
-							<div>Average Tip Per Meal: {{ calc.avgTip }}</div>
+							<div>Average Tip Per Meal: {{ calc.add()}}</div>
 						</div>
 					</div>
 				</div>
