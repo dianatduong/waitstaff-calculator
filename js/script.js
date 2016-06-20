@@ -11,7 +11,6 @@ var app = angular.module('myApp', [])
 
     this.earningsAvgTip = []
 
-
     // function to submit the form after all validation has occurred
     this.submitForm = function(isValid){
       //if form is valid
@@ -28,14 +27,15 @@ var app = angular.module('myApp', [])
 
         // multiplyin the subtotal to the tip to get the totalTip and add to the subtotal to get the customerTotalCharge
         this.customerTotalCharge = this.customerSubtotal + this.customerTotalTip;
+
+        //function to calculate the average tip per meal count
+        this.averageTip()
       }
       else {
         // show error messages
         this.submitted = true;
        }
     }
-
-  
 
     this.cancelForm = function(){
       this.mealPrice = '';
@@ -50,6 +50,10 @@ var app = angular.module('myApp', [])
       this.mealCount = '';
       this.customerSubtotal = '';
       this.customerTotalTip = '';
+    }
+
+    this.averageTip = function(){
+      this.avgTip = this.customerTotalTip / this.mealCount;
     }
 
 	})
