@@ -6,7 +6,7 @@ var app = angular.module('myApp', [])
 	// console.log(this.cost)
 
     //submitted forms empty array
-   	this.submittedData = [];
+   	this.submittedMealData = [];
    
    	// validates input is only numbers
    	this.onlyNumbers = /^\d+$/;
@@ -17,30 +17,38 @@ var app = angular.module('myApp', [])
 
     this.mealCount = 0;
 
+    this.earningsAvgTip = []
     // function to submit the form after all validation has occurred
     this.submitForm = function(isValid){
       //if form is valid
       if (isValid) {
         this.mealCount++;
         //push users input into the array
-         this.submittedData.push()
+         this.submittedMealData.push()
          // // clear form
          // this.cost = {};
          // console.log(this.cost)
 
          //converts tax to a decimal number
          this.totalTax = this.mealTax / 100;
+
+         this.totalTip = this.mealTip / 100;
          
          //converts tip to a decimal number
-         this.customerTotalTip = this.mealTip / 100;
+         this.customerTotalTip = this.mealPrice * this.totalTip;
 
          //multiplying price to tax to get the totalTax and then add to price
          this.customerSubtotal = (this.mealPrice * this.totalTax) + this.mealPrice
 
         // multiplyin the subtotal to the tip to get the totalTip and add to the subtotal to get the customerTotalCharge
-         this.customerTotalCharge = (this.customerSubtotal * this.customerTotalTip) + this.customerSubtotal
+         this.customerTotalCharge = this.customerSubtotal + this.customerTotalTip;
 
-         
+
+         // this.earningsAvgTip.push(this.customerTotalTip).reduce(add, 0);
+         // function add(a, b) {
+         //  return a+b;
+         // }
+
       }
       else {
         // show error messages
