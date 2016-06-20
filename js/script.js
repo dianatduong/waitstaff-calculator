@@ -28,20 +28,15 @@ var app = angular.module('myApp', [])
          // // clear form
          // this.cost = {};
          // console.log(this.cost)
-
-         //converts tax to a decimal number
-         this.totalTax = this.mealTax / 100;
-
-         this.totalTip = this.mealTip / 100;
          
-         //converts tip to a decimal number
-         this.customerTotalTip = this.mealPrice * this.totalTip;
+         //multiplying price and tip to get a dollar amount
+         this.customerTotalTip = this.mealPrice * (this.mealTip / 100);
 
          //multiplying price to tax to get the totalTax and then add to price
-         this.customerSubtotal = (this.mealPrice * this.totalTax) + this.mealPrice
+         this.customerSubtotal = (this.mealPrice * (this.mealTax / 100)) + this.mealPrice
 
         // multiplyin the subtotal to the tip to get the totalTip and add to the subtotal to get the customerTotalCharge
-         this.customerTotalCharge = this.customerSubtotal + this.customerTotalTip;
+        this.customerTotalCharge = this.customerSubtotal + this.customerTotalTip;
 
 
          // this.earningsAvgTip.push(this.customerTotalTip).reduce(add, 0);
