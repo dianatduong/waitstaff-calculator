@@ -11,6 +11,7 @@ var app = angular.module('myApp', [])
 
     this.earningsAvgTip = []
 
+
     // function to submit the form after all validation has occurred
     this.submitForm = function(isValid){
       //if form is valid
@@ -34,12 +35,21 @@ var app = angular.module('myApp', [])
        }
     }
 
-    this.cancelForm = function() {
+  
+
+    this.cancelForm = function(){
       this.mealPrice = '';
       this.mealTax = '';
       this.mealTip = '';
     }
 
-   
+    this.resetForm = function(){
+      this.mealPrice = '';
+      this.mealTax = '';
+      this.mealTip = '';
+      this.mealCount = '';
+      this.customerSubtotal = '';
+      this.customerTotalTip = '';
+    }
 
 	})

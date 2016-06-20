@@ -72,15 +72,15 @@
 					<div class="earnings">
 						<h2>My Earnings Info</h2>
 						<div>
-							<div>Tip Total {{ calc.earningsTipTotal }}</div>
+							<div>Tip Total: {{ calc.earningsTipTotal | currency}}</div>
 							<div>Meal count: {{ calc.mealCount }}</div>
-							<div>Average Tip Per Meal: {{ calc.add()}}</div>
+							<div>Average Tip Per Meal: {{ calc.avgTip | currency}}</div>
 						</div>
 					</div>
 				</div>
 
 					<div>
-						<button id="reset">Reset</button>
+						<button id="reset" ng-click="calc.resetForm()">Reset</button>
 					</div> 
 				</div>
 			</div>
