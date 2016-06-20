@@ -1,4 +1,4 @@
-var app = angular.module('myApp', [])
+var app = angular.module('myApp', ['ngMessages'])
 	app.controller('CalculatorController', function(){
 
     this.mealPrice = 0;
@@ -13,9 +13,6 @@ var app = angular.module('myApp', [])
 
     //submitted forms empty array
    	this.submittedMealData = [];
-   
-   	// validates input is only numbers
-   	this.onlyNumbers = /^\d+$/;
 
     // function to submit the form after all validation has occurred
     this.submitForm = function(isValid){
@@ -35,15 +32,16 @@ var app = angular.module('myApp', [])
         this.customerTotalCharge = this.customerSubtotal + this.customerTotalTip;
         
         this.averageTip()
-
         this.tipTotal()
+
         this.mealPrice = 0;
-    this.mealTax = 0;
-    this.mealTip = 0;
+        this.mealTax = 0;
+        this.mealTip = 0;
       }
       else {
         // show error messages
         this.submitted = true;
+        this.$invalid = true;
        }
     }
 
