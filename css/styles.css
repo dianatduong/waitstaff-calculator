@@ -15,32 +15,29 @@
     -webkit-padding-end: 0px;
 }
 
-.meal-details, 
-.charges,
-.earnings{
+.box{
     border: 2px solid black;
-}
+    margin-bottom: 5px;
 
-.charges {
-    margin-bottom: 50px;
-}
-
-h2 {
-    border-bottom: 2px solid black;
-    padding-bottom: 15px;
-}
-#reset {
-    float: right;
 }
 
 h1, h2 {
     text-align: center;
 }
 
-label {
+h2 {
+    border-bottom: 2px solid black;
+    padding-bottom: 15px;
+}
+
+label{
     text-align: right;
     width: 50%;
     margin-right: 10px;
+}
+
+span {
+   text-align: right;
 }
 
 .btns {
@@ -49,11 +46,11 @@ label {
     text-align: center;
 }
 
-.input-content {
-    padding-top: 10px;
-    margin: 10px;
-    font-size: 16px;
+#reset {
+    float: right;
 }
+
+
 @media only screen and (min-width: 320px) {
     body {
         color: purple;
