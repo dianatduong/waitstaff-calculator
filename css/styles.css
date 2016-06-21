@@ -18,7 +18,6 @@
 .box{
     border: 2px solid black;
     margin-bottom: 5px;
-
 }
 
 h1, h2 {
@@ -50,6 +49,11 @@ span {
     float: right;
 }
 
+.error {
+    text-align: center;
+    color: red;
+    border-color: red;
+}
 
 @media only screen and (min-width: 320px) {
     body {
