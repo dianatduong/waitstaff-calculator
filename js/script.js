@@ -14,6 +14,7 @@ var app = angular.module('myApp', ['ngMessages'])
     //submitted forms empty array
    	this.submittedMealData = [];
 
+
     // function to submit the form after all validation has occurred
     this.submitForm = function(isValid){
       //if form is valid
@@ -38,11 +39,7 @@ var app = angular.module('myApp', ['ngMessages'])
         this.mealTax = 0;
         this.mealTip = 0;
       }
-      else {
-        // show error messages
-        this.submitted = true;
-        this.$invalid = true;
-       }
+
     }
 
     //function to calculate the average tip per meal count
