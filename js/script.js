@@ -14,11 +14,10 @@ var app = angular.module('myApp', ['ngMessages'])
     //submitted forms empty array
    	this.submittedMealData = [];
 
-
     // function to submit the form after all validation has occurred
     this.submitForm = function(isValid){
       //if form is valid
-      if (isValid) {
+      if (isValid){
 
         this.mealCount++;
         //push users input into the array
@@ -32,23 +31,20 @@ var app = angular.module('myApp', ['ngMessages'])
 
         // multiplyin the subtotal to the tip to get the totalTip and add to the subtotal to get the customerTotalCharge
         this.customerTotalCharge = this.customerSubtotal + this.customerTotalTip;
-        
-        this.averageTip()
-        this.tipTotal()
 
+        this.tipTotal()
+        this.averageTip()
+        
+      
         this.mealPrice = 0;
         this.mealTax = 0;
         this.mealTip = 0;
-          
       }
-      // else {
-      //   // this.inputForm.$valid = false;
-      // }
     }
-
+  
     //function to calculate the average tip per meal count
     this.averageTip = function(){
-      this.avgTip = this.customerTotalTip / this.mealCount;
+      this.avgTip = this.earningsTipTotal / this.mealCount;
     }
 
     //function to calulate overall total custoer tips
