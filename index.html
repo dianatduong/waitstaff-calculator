@@ -31,51 +31,50 @@
 
 						<div class="box">
 							<h2>Enter Meal Details</h2>
-
-	<pre>submitted: {{ calc.inputForm.$submitted }}</pre>
-	<pre> valid: {{ calc.inputForm.$valid }}</pre>
-	<pre> pristine: {{ calc.inputForm.$pristine }}</pre>
-
-							<!-- error messages -->
-							<p ng-class="{error: calc.inputForm.mealPrice.$error, error: calc.inputForm.mealTax.$error, error: calc.inputForm.mealTip.$error}" ng-show="calc.inputForm.$invalid">Please use a numerical value.</p>
 							
+						<!-- error messages -->
+						<div ng-if="calc.inputForm.$submitted" 
+							ng-messages="calc.inputForm.mealPrice.$error" role="alert">
+							<p ng-class="{error:calc.inputForm.$invalid}"  ng-message="required">Please provide a numerical value for the Base Meal Price.</p>
+						</div>
+						<div ng-if="calc.inputForm.$submitted" 
+							ng-messages="calc.inputForm.mealTax.$error" role="alert">
+							<p ng-class="{error:calc.inputForm.$invalid}"  ng-message="required">Please provide a numerical value for the Tax Rate.</p>
+						</div>
+						<div ng-if="calc.inputForm.$submitted" 
+							ng-messages="calc.inputForm.mealTip.$error" role="alert">
+							<p ng-class="{error:calc.inputForm.$invalid}"  ng-message="required">Please provide a numerical value Tip Percentage.</p>
+						</div>
+
+
 							<!-- meal prices -->
 							<div class="form-group">
 								<label>Base Meal Price: &#36;</label>
 								<input id="mealPrice" type="number"
-									ng-class="{error: calc.inputForm.mealPrice.$invalid}"
 									name="mealPrice" 
 									ng-model="calc.mealPrice" 
+									ng-pattern="/[1-9]/"
 									required />
-								<div ng-if="calc.inputForm.$submitted && calc.inputForm.mealPrice.$error" ng-messages="calc.inputForm.mealPrice.$error" role="alert">
-									<p ng-message="required"></p>
-								</div>
 							</div> 
 							
 							<!-- tax -->
 							<div class="form-group">
 								<label>Tax Rate: &#37;</label>
 								<input id="mealTax" type="number" 
-									ng-class="{error: calc.inputForm.mealTax.$invalid}"
 									name="mealTax" 
 									ng-model="calc.mealTax" 
+									ng-pattern="/[1-9]/"
 									required />
-								<div ng-if="calc.inputForm.$submitted && calc.inputForm.mealTax.$error" ng-messages="calc.inputForm.mealTax.$error" role="alert">
-									<p ng-message="required"></p>
-								</div>
 							</div>
 
 							<!-- tip -->
 							<div class="form-group">
 								<label>Tip Percentage: &#37;</label>
 								<input id="mealTip" type="number" 
-									ng-class="{error: calc.inputForm.mealTip.$invalid}"
 									name="mealTip" 
 									ng-model="calc.mealTip" 
+									ng-pattern="/[1-9]/"
 									required />
-								<div ng-if="calc.inputForm.$submitted && calc.inputForm.mealTip.$error" ng-messages="calc.inputForm.mealTip.$error">
-									<p ng-message="required"></p>
-								</div>
 							</div>
 							
 							<!-- submit and cancel btns -->
@@ -94,15 +93,16 @@
 						<div class="charges">
 							<div class="row">
 								<span class="col-xs-offset-2 col-xs-4">Subtotal</span>
-								<p class="col-xs-6" ng-show="calc.inputForm.$valid">{{ calc.customerSubtotal | currency}}</p>
+								<p class="col-xs-6">{{ calc.customerSubtotal | currency}}</p>
 							</div>
 							<div class="row">
 								<span class="col-xs-offset-2 col-xs-4">Tip</span>
-								<p class="col-xs-6" ng-show="calc.inputForm.$valid">{{ calc.customerTotalTip | currency }}</p>
+								<p class="col-xs-6">{{ calc.customerTotalTip | currency }}</p>
 							</div>
+							<hr>
 							<div class="row">
 								<span class="col-xs-offset-2 col-xs-4">Total</span>
-								<p class="col-xs-6" ng-show="calc.inputForm.$valid">{{ calc.customerTotalCharge | currency}}</p>
+								<p class="col-xs-6">{{ calc.customerTotalCharge | currency}}</p>
 							</div>
 						</div> 
 					</div> 
@@ -118,7 +118,7 @@
 								<p class="col-xs-6">{{ calc.earningsTipTotal | currency}}</p>
 							</div>
 							<div class="row">
-								<span class="col-xs-offset-2 col-xs-4">Meal count:</span>
+								<span class="col-xs-offset-2 col-xs-4">Meal Count:</span>
 								<p class="col-xs-6">{{ calc.mealCount }}</p>
 							</div>
 							<div class="row">
