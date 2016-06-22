@@ -76,7 +76,7 @@
 							
 							<!-- submit and cancel btns -->
 							<div class="btns">
-								<button class="btn btn-default" id="submit-btn" type="submit">Submit</button>
+								<button class="btn btn-default" id="submit-btn" type="submit" ng-disabled="calc.inputForm.$invalid">Submit</button>
 								<button class="btn btn-default" id="cancel-btn" type="button" ng-click="calc.cancelForm()">Cancel</button>
 							</div>
 						</div> 
