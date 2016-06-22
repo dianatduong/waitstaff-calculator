@@ -40,6 +40,7 @@ var app = angular.module('myApp', ['ngMessages'])
         vm.mealPrice = 0;
         vm.mealTax = 0;
         vm.mealTip = 0;
+        vm.inputForm.$setPristine()
       }
     }
   
@@ -58,6 +59,7 @@ var app = angular.module('myApp', ['ngMessages'])
       vm.mealPrice = 0;
       vm.mealTax = 0;
       vm.mealTip = 0;
+      vm.inputForm.$setPristine()
     }
 
     // function to reset all fields
@@ -71,6 +73,7 @@ var app = angular.module('myApp', ['ngMessages'])
       vm.customerTotalCharge = 0;
       vm.mealCount = 0;
       vm.avgTip = 0;
+      vm.inputForm.$setPristine()
     }
 
 	})
