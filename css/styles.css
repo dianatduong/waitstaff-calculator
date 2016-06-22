@@ -17,16 +17,17 @@
 
 .box{
     border: 2px solid black;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 h1, h2 {
     text-align: center;
+     padding-bottom: 15px;
 }
 
 h2 {
     border-bottom: 2px solid black;
-    padding-bottom: 15px;
+   
 }
 
 label{
@@ -40,13 +41,16 @@ span {
 }
 
 .btns {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 50px;
+    padding-right: 10px;
     text-align: center;
 }
 
 #reset {
     float: right;
+    margin-right: 20px;
+    margin-top: 15px;
 }
 
 .error {
@@ -55,35 +59,10 @@ span {
     border-color: red;
 }
 
-@media only screen and (min-width: 320px) {
-    body {
-        color: purple;
-    }
-}
-
-
-/*iPhone landscape*/
-
-@media only screen and (min-width: 480px) {
-    body {
-        color: green;
-    }
-}
-
-
-/*ipad potrait*/
-
-@media only screen and (min-width: 768px) {
-    body {
-        color: red;
-    }
-}
-
-
-/*ipad lanscape / small laptop*/
-
-@media only screen and (min-width: 1024px) {
-    body {
-        color: blue;
-    }
+hr {
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 15px;
+    border-top: 2px solid #000;
+    width: 30%;
 }
