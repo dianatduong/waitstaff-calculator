@@ -31,15 +31,15 @@
 							<h2>Enter Meal Details</h2>
 							
 						<!-- error messages -->
-						<div ng-if="calc.inputForm.$submitted" 
+						<div ng-if="calc.inputForm.mealPrice.$error" 
 							ng-messages="calc.inputForm.mealPrice.$error" role="alert">
 							<p ng-class="{error:calc.inputForm.$invalid}"  ng-message="required">Please provide a numerical value for the Base Meal Price.</p>
 						</div>
-						<div ng-if="calc.inputForm.$submitted" 
+						<div ng-if="calc.inputForm.mealPrice.$error" 
 							ng-messages="calc.inputForm.mealTax.$error" role="alert">
 							<p ng-class="{error:calc.inputForm.$invalid}"  ng-message="required">Please provide a numerical value for the Tax Rate.</p>
 						</div>
-						<div ng-if="calc.inputForm.$submitted" 
+						<div ng-if="calc.inputForm.mealPrice.$error" 
 							ng-messages="calc.inputForm.mealTip.$error" role="alert">
 							<p ng-class="{error:calc.inputForm.$invalid}"  ng-message="required">Please provide a numerical value Tip Percentage.</p>
 						</div>
@@ -48,7 +48,8 @@
 							<div class="form-group">
 								<label>Base Meal Price: &#36;</label>
 								<input id="mealPrice" type="number"
-									name="mealPrice" 
+									name="mealPrice"  
+									class="ng-pristine ng-invalid"
 									ng-model="calc.mealPrice" 
 									ng-pattern="/[1-9]/"
 									required />
@@ -59,6 +60,7 @@
 								<label>Tax Rate: &#37;</label>
 								<input id="mealTax" type="number" 
 									name="mealTax" 
+									class="ng-pristine ng-invalid"
 									ng-model="calc.mealTax" 
 									ng-pattern="/[1-9]/"
 									required />
@@ -69,6 +71,7 @@
 								<label>Tip Percentage: &#37;</label>
 								<input id="mealTip" type="number" 
 									name="mealTip" 
+									class="ng-pristine ng-invalid"
 									ng-model="calc.mealTip" 
 									ng-pattern="/[1-9]/"
 									required />
