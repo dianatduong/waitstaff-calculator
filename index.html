@@ -10,10 +10,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.js"></script>
-	
-
 </head>
-
 <body>
 
 <div class="wrapper">
@@ -24,10 +21,11 @@
 	<section ng-controller="CalculatorController as calc">
 		<div class="container">
 			<div class="row"> 
-
 				<div class="col-xs-12 col-md-6">
 
-					<form name="calc.inputForm" ng-submit="calc.inputForm.$valid && calc.submitForm(calc.inputForm)" novalidate>
+					<form name="calc.inputForm" 
+						ng-submit="calc.inputForm.$valid && calc.submitForm(calc.inputForm)" 
+						novalidate>
 
 						<div class="box">
 							<h2>Enter Meal Details</h2>
@@ -45,7 +43,6 @@
 							ng-messages="calc.inputForm.mealTip.$error" role="alert">
 							<p ng-class="{error:calc.inputForm.$invalid}"  ng-message="required">Please provide a numerical value Tip Percentage.</p>
 						</div>
-
 
 							<!-- meal prices -->
 							<div class="form-group">
