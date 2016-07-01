@@ -8,136 +8,27 @@
 	 <!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/styles.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.js"></script>
 </head>
 <body>
-
 <div class="wrapper">
 	<header>
 		<h1>Waitstaff Calculator</h1>
 	</header>
 
-	<section ng-controller="CalculatorController as calc">
-		<div class="container">
-			<div class="row"> 
-				<div class="col-xs-12 col-md-6">
+	<section class="container">
+		<p>Lorem ipsum dolor sit amet, nec no sale timeam, graeci abhorreant definiebas at sea. Ad per alienum electram, his ut modo assueverit. Eos ea recteque expetendis consetetur. Autem exerci propriae sit ad. Pri cu quas aeque possit, sit et ignota reformidans vituperatoribus. In mei ridens interpretaris, nam autem phaedrum constituam cu. Vis et elit delenit.
+		</p>
 
-					<form name="calc.inputForm" 
-						ng-submit="calc.inputForm.$valid && calc.submitForm(calc.inputForm)" 
-						novalidate>
+		<p>Ius eu fugit facete omittantur. Habeo inani ut vel, ne has quidam latine iudicabit, vim delectus intellegebat in. Usu ex habeo dicant, duo id omnis dolor, eu verear dolorum posidonium eum. Minim nostrud in est. Usu malorum persius sapientem te, nostro disputationi qui ea. Tale platonem accommodare id his, saepe gubergren te per, te eam numquam fabulas.
+		</p>
 
-						<div class="box">
-							<h2>Enter Meal Details</h2>
-							
-						<!-- error messages -->
-						<div ng-if="calc.inputForm.mealPrice.$error" 
-							ng-messages="calc.inputForm.mealPrice.$error" role="alert">
-							<p ng-class="{error:calc.inputForm.$invalid}"  ng-message="required">Please provide a numerical value for the Base Meal Price.</p>
-						</div>
-						<div ng-if="calc.inputForm.mealPrice.$error" 
-							ng-messages="calc.inputForm.mealTax.$error" role="alert">
-							<p ng-class="{error:calc.inputForm.$invalid}"  ng-message="required">Please provide a numerical value for the Tax Rate.</p>
-						</div>
-						<div ng-if="calc.inputForm.mealPrice.$error" 
-							ng-messages="calc.inputForm.mealTip.$error" role="alert">
-							<p ng-class="{error:calc.inputForm.$invalid}"  ng-message="required">Please provide a numerical value Tip Percentage.</p>
-						</div>
-
-							<!-- meal prices -->
-							<div class="form-group">
-								<label>Base Meal Price: &#36;</label>
-								<input id="mealPrice" type="number"
-									name="mealPrice"  
-									class="ng-pristine ng-invalid"
-									ng-model="calc.mealPrice" 
-									ng-pattern="/[1-9]/"
-									required />
-							</div> 
-							
-							<!-- tax -->
-							<div class="form-group">
-								<label>Tax Rate: &#37;</label>
-								<input id="mealTax" type="number" 
-									name="mealTax" 
-									class="ng-pristine ng-invalid"
-									ng-model="calc.mealTax" 
-									ng-pattern="/[1-9]/"
-									required />
-							</div>
-
-							<!-- tip -->
-							<div class="form-group">
-								<label>Tip Percentage: &#37;</label>
-								<input id="mealTip" type="number" 
-									name="mealTip" 
-									class="ng-pristine ng-invalid"
-									ng-model="calc.mealTip" 
-									ng-pattern="/[1-9]/"
-									required />
-							</div>
-							
-							<!-- submit and cancel btns -->
-							<div class="btns">
-								<button class="btn btn-default" id="cancel-btn" type="button" ng-click="calc.cancelForm()">Cancel</button>
-								<button class="btn btn-default" id="submit-btn" type="submit" ng-disabled="calc.inputForm.$invalid">Submit</button>
-							</div>
-						</div> 
-					</form> 
-				</div>
-
-				<!-- charges -->
-				<div class="col-xs-12 col-md-6">
-					<div class="box">
-						<h2>Customer Charges</h2>
-						<div class="charges">
-							<div class="row">
-								<span class="col-xs-offset-2 col-xs-4">Subtotal</span>
-								<p class="col-xs-6">{{ calc.customerSubtotal | currency}}</p>
-							</div>
-							<div class="row">
-								<span class="col-xs-offset-2 col-xs-4">Tip</span>
-								<p class="col-xs-6">{{ calc.customerTotalTip | currency }}</p>
-							</div>
-							<hr>
-							<div class="row">
-								<span class="col-xs-offset-2 col-xs-4">Total</span>
-								<p class="col-xs-6">{{ calc.customerTotalCharge | currency}}</p>
-							</div>
-						</div> 
-					</div> 
-				</div> 
-
-				<!-- earnings -->
-				<div class="col-xs-12 col-md-6">
-					<div class="box">
-						<h2>My Earnings Info</h2>
-						<div class="earnings">
-							<div class="row">
-								<span class="col-xs-offset-2 col-xs-4">Tip Total:</span>
-								<p class="col-xs-6">{{ calc.earningsTipTotal | currency}}</p>
-							</div>
-							<div class="row">
-								<span class="col-xs-offset-2 col-xs-4">Meal Count:</span>
-								<p class="col-xs-6">{{ calc.mealCount }}</p>
-							</div>
-							<div class="row">
-								<span class="col-xs-offset-2 col-xs-4">Average Tip Per Meal:</span>
-								<p class="col-xs-6">{{ calc.avgTip | currency}}</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- reset button -->
-				<div>
-					<button class="btn btn-default" id="reset" ng-click="calc.resetForm()">Reset</button>
-				</div> 
-
-			</div> 
-		</div> 
+		<p>Eam ut unum prima velit, vel nonumy docendi posidonium ea, vim dicam soleat quodsi at. Qui ne movet adipisci. Ei mea case saepe. Ex vix quodsi salutatus, ad delectus appareat nec. An duo nostro probatus.
+		</p>
 	</section>
-</div> 
+</div>
+    <script src="app/bower_components/angular/angular.js"></script>
+    <script src="app/bower_components/angular-route/angular-route.js"></script>
+    <script src="app/bower_components/angular-messages/angular-messages.js"></script>
 	<script src="js/script.js" type="text/javascript"></script>
 </body>
 </html>
