@@ -1,0 +1,21 @@
+{
+  "name": "waitstaff-calculator",
+  "homepage": "https://github.com/onesixdee/waitstaff-calculator",
+  "authors": [
+    "Diana Duong <dduong013@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-route": "^1.5.7"
+  }
+}
