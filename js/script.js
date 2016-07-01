@@ -1,8 +1,8 @@
 angular
   .module('myApp', ['ngRoute', 'ngMessages'])
-  .config('$routeProvider', function($routeProvider){
+  .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/', {
-      templateUrl : 'index.html',
+      templateUrl : 'home.html',
       controller :  'HomeCtrl as home'
     })
     .when('/new-meal', {
@@ -13,4 +13,17 @@ angular
       templateUrl : 'my-earnings.html',
       controller : 'MyEarningsCtrl as earnings'
     })
+  }])
+  .controller('HomeCtrl', function($scope){
+      var vm = this;
   })
+  .controller('NewMealCtrl', function($scope){
+      var vm = this;
+      
+  })
+  .controller('MyEarningsCtrl', function($scope){
+      var vm = this;
+    
+  })
+
+
