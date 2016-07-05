@@ -1,0 +1,27 @@
+<!-- earnings -->
+<div class="row">
+	<div class="col-xs-12 col-md-6">
+		<div class="box">
+			<h2>My Earnings Info</h2>
+			<div class="earnings">
+				<div class="row">
+					<span class="col-xs-offset-2 col-xs-4">Tip Total:</span>
+					<p class="col-xs-6">{{ vm.earningFactory.earningsTipTotal | currency}}</p>
+				</div>
+				<div class="row">
+					<span class="col-xs-offset-2 col-xs-4">Meal Count:</span>
+					<p class="col-xs-6">{{ vm.earningFactory.mealCount }}</p>
+				</div>
+				<div class="row">
+					<span class="col-xs-offset-2 col-xs-4">Average Tip Per Meal:</span>
+					<p class="col-xs-6">{{ vm.earningFactory.averageTip | currency}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<!-- reset button -->
+	<div>
+		<button class="btn btn-default" id="reset" ng-click="vm.resetForm()">Reset</button>
+	</div> 

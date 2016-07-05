@@ -2,24 +2,20 @@ angular
   .module('myApp', ['ngRoute', 'ngMessages'])
   .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/', {
-      templateUrl : 'home.html',
-      controller :  'HomeCtrl as vm'
+        templateUrl : 'home.html',
+        controller :  'HomeCtrl as vm'
     })
     .when('/new-meal', {
-      templateUrl : 'new-meal.html',
-      controller : 'NewMealCtrl as vm'
+        templateUrl : 'new-meal.html',
+        controller : 'NewMealCtrl as vm'
     })
     .when('/my-earnings', {
-      templateUrl : 'my-earnings.html',
-      controller : 'MyEarningsCtrl as vm'
+        templateUrl : 'my-earnings.html',
+        controller : 'MyEarningsCtrl as vm'
     })
   }])
-  .controller('HomeCtrl', function(){
+  .factory('earningFactory', function() {
       var vm = this;
-  })
-  .controller('NewMealCtrl', function(){
-      var vm = this;
-
       vm.mealPrice = 0;
       vm.mealTax = 0;
       vm.mealTip = 0;
@@ -29,58 +25,107 @@ angular
       vm.customerTotalCharge = 0;
       vm.mealCount = 0;
       vm.avgTip = 0;
+      vm.averageTip = 0;
 
-      //submitted forms empty array
-      vm.submittedMealData = [];
+      vm.reset = function() {
+          vm.mealPrice = 0;
+          vm.mealTax = 0;
+          vm.mealTip = 0;
+          vm.earningsTipTotal = 0;
+          vm.customerSubtotal = 0;
+          vm.customerTotalTip = 0;
+          vm.customerTotalCharge = 0;
+          vm.mealCount = 0;
+          vm.avgTip = 0;
+          vm.averageTip = 0;
+      }
+      return vm;
+      
+  })
+  .controller('HomeCtrl', function(){
+      
+  })
+  .controller('NewMealCtrl', function(earningFactory){
 
-      // function to submit the form after all validation has occurred
-      vm.submitForm = function(isValid){
-        //if form is valid
-        if (isValid){
+       var vm = this;
+        console.log(earningFactory)
 
-          vm.mealCount++;
-          //push users input into the array
-          vm.submittedMealData.push()
-           
-          //multiplying price and tip to get a dollar amount
-          vm.customerTotalTip = vm.mealPrice * (vm.mealTip / 100);
+        //submitted forms empty array
+        vm.submittedMealData = [];
+          vm.earningsTipTotal = 0;
+          vm.mealCount = earningFactory.mealCount;
 
-          //multiplying price to tax to get the totalTax and then add to price
-          vm.customerSubtotal = (vm.mealPrice * (vm.mealTax / 100)) + vm.mealPrice
+        // function to submit the form after all validation has occurred
+        vm.submitForm = function(isValid){
+          if (isValid){
 
-          // multiplyin the subtotal to the tip to get the totalTip and add to the subtotal to get the customerTotalCharge
-          vm.customerTotalCharge = vm.customerSubtotal + vm.customerTotalTip;
+            //push users input into the array
+            vm.submittedMealData.push()
 
-          vm.tipTotal()
-          vm.averageTip()
-        
+            //Calculate Total Tip 
+            vm.customerTotalTip = vm.mealPrice * (vm.mealTip / 100);
+
+            //Calculate Subtotal (Meal plus tax)
+            vm.customerSubtotal = (vm.mealPrice * (vm.mealTax / 100)) + vm.mealPrice
+
+            //Calculate total (subtotal plus tip)
+            vm.customerTotalCharge = vm.customerSubtotal + vm.customerTotalTip;
+
+            //increment meal count
+            earningFactory.mealCount++;
+
+            //clear input values
+            vm.mealPrice = 0;
+            vm.mealTax = 0;
+            vm.mealTip = 0;
+
+
+            vm.tipTotal()
+            vm.averageTip()
+            vm.inputForm.$setPristine()
+          }
+        }
+        //Calculate the average tip per meal count
+        vm.averageTip = function(){
+          vm.avgTip = earningFactory.earningsTipTotal / earningFactory.mealCount;
+          earningFactory.averageTip = earningFactory.earningsTipTotal / earningFactory.mealCount
+        }
+
+        //Calulate overall total customer tips
+        vm.tipTotal = function(){
+          earningFactory.earningsTipTotal += vm.customerTotalTip;
+        }
+
+        // function to cancel meal details input
+        vm.cancelForm = function(){
           vm.mealPrice = 0;
           vm.mealTax = 0;
           vm.mealTip = 0;
           vm.inputForm.$setPristine()
-        }
-      }
-      //function to calculate the average tip per meal count
-      vm.averageTip = function(){
-        vm.avgTip = vm.earningsTipTotal / vm.mealCount;
-      }
-
-      //function to calulate overall total custoer tips
-      vm.tipTotal = function(){
-        vm.earningsTipTotal += vm.customerTotalTip;
-      }
-
-      // function to cancel meal details input
-      vm.cancelForm = function(){
-        vm.mealPrice = 0;
-        vm.mealTax = 0;
-        vm.mealTip = 0;
-        vm.inputForm.$setPristine()
-      }  
+        }  
   })
-  .controller('MyEarningsCtrl', function(){
-      var vm = this;
-    
+  .controller('MyEarningsCtrl', function(earningFactory){
+       var vm = this;
+
+     //   vm.earningsTipTotal = earningFactory.earningsTipTotal
+     //  vm.mealCount = earningFactory.mealCount
+     // vm.averageTip = earningFactory.averageTip
+
+     vm.earningFactory = earningFactory
+       console.log(earningFactory)
+
+          // function to reset all fields
+          vm.resetForm = function(){
+            earningFactory.reset()
+            console.log(earningFactory)
+            // vm.earningsTipTotal = 0;
+            // vm.customerSubtotal = 0;
+            // vm.customerTotalTip = 0;
+            // vm.customerTotalCharge = 0;
+            // vm.mealCount = 0;
+            // vm.avgTip = 0;
+            // vm.inputForm.$setPristine()
+          }
   })
 
 
