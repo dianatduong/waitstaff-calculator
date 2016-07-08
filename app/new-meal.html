@@ -9,19 +9,19 @@
 
 		<div class="box">
 			<h2>Enter Meal Details</h2>
-				{{ vm.inputForm.mealPrice.$error  | json}}
+
 			<!-- error messages -->
-			<div ng-if="vm.inputForm.mealPrice.$error"
+			<div ng-if="vm.inputForm.mealPrice.$dirty"
 				ng-messages="vm.inputForm.mealPrice.$error" role="alert">
-				<p ng-class="{error: vm.inputForm.$invalid}"  ng-message="required">Please provide a numerical value for the Base Meal Price.</p>
+				<p ng-class="{error: vm.inputForm.$invalid}" ng-message when="required">Please provide a numerical value for the Base Meal Price.</p>
 			</div>
-			<div ng-if="vm.inputForm.mealPrice.$error"
+			<div ng-if="vm.inputForm.mealTax.$dirty"
 				ng-messages="vm.inputForm.mealTax.$error" role="alert">
-				<p ng-class="{error: vm.inputForm.$invalid}"  ng-message="required">Please provide a numerical value for the Tax Rate.</p>
+				<p ng-class="{error: vm.inputForm.$invalid}"  ng-message when="required">Please provide a numerical value for the Tax Rate.</p>
 			</div>
-			<div ng-if="vm.inputForm.mealPrice.$error"
+			<div ng-if="vm.inputForm.mealTip.$dirty"
 				ng-messages="vm.inputForm.mealTip.$error" role="alert">
-				<p ng-class="{error: vm.inputForm.$invalid}"  ng-message="required">Please provide a numerical value Tip Percentage.</p>
+				<p ng-class="{error: vm.inputForm.$invalid}"  ng-message when="required">Please provide a numerical value Tip Percentage.</p>
 			</div>
 
 			<!-- meal prices -->
