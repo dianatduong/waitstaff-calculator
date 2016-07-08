@@ -2,23 +2,24 @@
 	<div class="row"> 
 	<div class="col-xs-12 col-md-6">
 
+
 		<form name="vm.inputForm" 
 			ng-submit="vm.inputForm.$valid && vm.submitForm(vm.inputForm)" 
 			novalidate>
 
 		<div class="box">
 			<h2>Enter Meal Details</h2>
-				
+				{{ vm.inputForm.mealPrice.$error  | json}}
 			<!-- error messages -->
-			<div ng-if="vm.inputForm.mealPrice.$error" 
+			<div ng-if="vm.inputForm.mealPrice.$error"
 				ng-messages="vm.inputForm.mealPrice.$error" role="alert">
 				<p ng-class="{error: vm.inputForm.$invalid}"  ng-message="required">Please provide a numerical value for the Base Meal Price.</p>
 			</div>
-			<div ng-if="vm.inputForm.mealPrice.$error" 
+			<div ng-if="vm.inputForm.mealPrice.$error"
 				ng-messages="vm.inputForm.mealTax.$error" role="alert">
 				<p ng-class="{error: vm.inputForm.$invalid}"  ng-message="required">Please provide a numerical value for the Tax Rate.</p>
 			</div>
-			<div ng-if="vm.inputForm.mealPrice.$error" 
+			<div ng-if="vm.inputForm.mealPrice.$error"
 				ng-messages="vm.inputForm.mealTip.$error" role="alert">
 				<p ng-class="{error: vm.inputForm.$invalid}"  ng-message="required">Please provide a numerical value Tip Percentage.</p>
 			</div>
