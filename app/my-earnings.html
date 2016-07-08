@@ -3,7 +3,7 @@
 	<div class="col-xs-12 col-md-offset-3 col-md-6">
 		<div class="box">
 			<h2>My Earnings Info</h2>
-			<div class="earnings">
+			<div class="box-contents">
 				<div class="row">
 					<span class="col-xs-offset-2 col-xs-4">Tip Total:</span>
 					<!-- customerTotalTip + customerTotalTip -->
@@ -15,7 +15,7 @@
 					<p class="col-xs-6">{{ vm.earningFactory.earningsMealCount }}</p>
 				</div>
 				<div class="row">
-					<span class="col-xs-offset-2 col-xs-4">Average Tip Per Meal:</span>
+					<span class="col-xs-6">Average Tip Per Meal:</span>
 					<!-- earningsTipTotal / mealcount -->
 					<p class="col-xs-6">{{ vm.earningFactory.earningsAverageTip | currency}}</p>
 				</div>
