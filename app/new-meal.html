@@ -85,16 +85,16 @@
 			<div class="box-contents">
 				<div class="row">
 					<span class="col-xs-offset-2 col-xs-4">Subtotal</span>
-					<p class="col-xs-6">{{ vm.customerSubtotal | currency}}</p>
+					<p class="col-xs-6">{{ vm.earningFactory.customerSubtotal | currency}}</p>
 				</div>
 				<div class="row">
 					<span class="col-xs-offset-2 col-xs-4">Tip</span>
-					<p class="col-xs-6">{{ vm.customerTotalTip | currency }}</p>
+					<p class="col-xs-6">{{ vm.earningFactory.customerTotalTip | currency }}</p>
 				</div>
 				<hr>
 				<div class="row">
 					<span class="col-xs-offset-2 col-xs-4">Total</span>
-					<p class="col-xs-6">{{ vm.customerTotalCharge | currency}}</p>
+					<p class="col-xs-6">{{ vm.earningFactory.customerTotalCharge | currency}}</p>
 				</div>
 			</div> 
 		</div> 
