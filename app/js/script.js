@@ -1,6 +1,6 @@
 
 angular
-  .module('myApp', ['ngRoute', 'ngMessages'])
+  .module('myApp', ['ngRoute', 'ngMessages', 'ngAnimate'])
   .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/', {
         templateUrl : 'home.html',
@@ -30,8 +30,6 @@ angular
       vm.earningsAverageTip = 0;
 
  
-
-
       vm.reset = function() {
           vm.mealPrice = 0;
           vm.mealTax = 0;

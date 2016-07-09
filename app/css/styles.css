@@ -101,6 +101,26 @@ hr {
     width: 45%;
 }
 
+/* animation */
+.animate-container { 
+  position:relative; min-height: 100%;
+}
+
+.animate.ng-enter,
+.animate.ng-leave {
+    transition:0.5s linear all;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:#eee;
+}
+.animate.ng-enter { opacity:0; z-index:100; }
+.animate.ng-enter.ng-enter-active { opacity:0.5; }
+.animate.ng-leave { opacity:0.5; z-index:99; }
+.animate.ng-leave.ng-leave-active { opacity:0; }
+
 @media only screen and (min-width: 320px) {
 
     h1 {
